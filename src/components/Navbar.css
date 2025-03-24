@@ -1,0 +1,73 @@
+/* Estilos base */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    padding: 15px 20px;
+    color: #000000;
+  }
+  
+  /* Logo */
+  .navbar-logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+  
+  .logo {
+    width: 20px; 
+    height: 20px; 
+    object-fit: contain; 
+    margin: 5px;
+  }
+  
+  /* Botón del menú */
+  .menu-toggle {
+    background: none;
+    border: none;
+    color: 000000;
+    cursor: pointer;
+    display: none;
+  }
+  
+  /* Menú */
+  .navbar-menu {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+  }
+  
+  .navbar-menu li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    padding: 10px;
+  }
+  
+  .navbar-menu li a:hover {
+    color: #00aced;
+  }
+  
+  /* Responsive: Mostrar el menú hamburguesa en móviles */
+  @media (max-width: 768px) {
+    .menu-toggle {
+      display: block;
+    }
+  
+    .navbar-menu {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      background: #000000;
+      padding: 10px;
+      border-radius: 5px;
+    }
+  
+    .navbar-menu.open {
+      display: flex;
+    }
+  }

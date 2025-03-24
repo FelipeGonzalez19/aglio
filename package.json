@@ -4,10 +4,12 @@
   "private": true,
   "homepage": ".",
   "dependencies": {
+    "@fontsource/poppins": "^5.2.5",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
     "@testing-library/user-event": "^13.5.0",
+    "lucide-react": "^0.483.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-scripts": "5.0.1",
@@ -19,7 +21,11 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "electron": "electron public/electron.js",
-    "start-electron": "npm run build && npm run electron"
+    "start-electron": "npm run build && npm run electron",
+    "build-electron": "electron-builder",
+    "build-electron:mac": "electron-builder --mac",
+    "build-electron:win": "electron-builder --win",
+    "build-electron:linux": "electron-builder --linux"
   },
   "eslintConfig": {
     "extends": [
@@ -40,6 +46,30 @@
     ]
   },
   "devDependencies": {
-    "electron": "^35.0.3"
+    "electron": "^35.0.3",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.tucompañia.tuaplicacion",
+    "productName": "Nombre de tu Aplicación",
+    "mac": {
+      "category": "public.app-category.utilities",
+      "icon": "build/icon.icns"
+    },
+    "win": {
+      "icon": "build/icon.ico"
+    },
+    "linux": {
+      "icon": "build/icons",
+      "category": "Utility",
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "directories": {
+      "buildResources": "build",
+      "output": "dist"
+    }
   }
 }

@@ -1,10 +1,11 @@
-const { app, BrowserWindow, Menu, Tray } = require("electron");
+const { app, BrowserWindow, Menu, Tray, nativeImage } = require("electron");
 const path = require("path");
 
 function createWindow() {
   const win = new BrowserWindow({
-    width: 800,
+    width: 700,
     height: 600,
+    resizable: false,
     webPreferences: {
       nodeIntegration: true,
     },
@@ -17,9 +18,12 @@ function createWindow() {
 
 app.whenReady().then(()=> {
     window = createWindow();
-    const iconPath = path.join(__dirname, 'icon.png');
-    console.log(iconPath);
-    const tray = new Tray(iconPath);
+    let icon = nativeImage.createFromPath(path.join(__dirname, 'iconTemplate.png'));
+    let dockIcon = nativeImage.createFromPath(path.join(__dirname, 'iconDock.png'));
+    dockIcon = dockIcon.resize({ width: 32, height: 32 }); 
+    app.dock.setIcon(dockIcon);
+    icon = icon.resize({ width: 16, height: 12 });
+    const tray = new Tray(icon);
     const contextMenu = Menu.buildFromTemplate([
         {
           label: "Abrir",
